@@ -2,7 +2,6 @@ package com.example.lmspeaksoft.entity;
 
 
 import com.example.lmspeaksoft.enums.Format;
-import com.example.lmspeaksoft.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +22,6 @@ public class Student {
             sequenceName = "student_seq",
             allocationSize = 1)
     private Long id;
-    private Role role;
     private Format format;
 
 
@@ -46,9 +44,8 @@ public class Student {
             CascadeType.MERGE,
             CascadeType.REFRESH},mappedBy = "student")
     private List<Test>tests;
-    public Student(Long id, Role role, Format format) {
+    public Student(Long id, Format format) {
         this.id = id;
-        this.role = role;
         this.format = format;
     }
 }
