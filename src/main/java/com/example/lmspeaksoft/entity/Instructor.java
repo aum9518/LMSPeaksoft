@@ -1,7 +1,6 @@
 package com.example.lmspeaksoft.entity;
 
 
-import com.example.lmspeaksoft.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +21,7 @@ public class Instructor {
             sequenceName = "instructor_seq",
             allocationSize = 1)
     private Long id;
-    private Role role;
-    private String ocupation;
+    private String occupation;
 
 
     @OneToMany(cascade = {CascadeType.DETACH,
@@ -36,9 +34,8 @@ public class Instructor {
             CascadeType.REFRESH},mappedBy = "instructor")
     private List<Group>groups;
 
-    public Instructor(Long id, Role role, String ocupation) {
+    public Instructor(Long id, String occupation) {
         this.id = id;
-        this.role = role;
-        this.ocupation = ocupation;
+        this.occupation = occupation;
     }
 }
