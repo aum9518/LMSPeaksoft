@@ -22,6 +22,7 @@ public class Student {
             sequenceName = "student_seq",
             allocationSize = 1)
     private Long id;
+    @Enumerated(value = EnumType.STRING)
     private Format format;
 
 
@@ -32,7 +33,8 @@ public class Student {
 
     @OneToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
-            CascadeType.REFRESH})
+            CascadeType.REFRESH,
+            CascadeType.REMOVE})
     private User user;
 
     @OneToMany(cascade = {CascadeType.DETACH,

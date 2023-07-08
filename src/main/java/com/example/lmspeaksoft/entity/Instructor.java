@@ -33,6 +33,8 @@ public class Instructor {
             CascadeType.MERGE,
             CascadeType.REFRESH},mappedBy = "instructor")
     private List<Group>groups;
+    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.REMOVE})
+    private User user;
 
     public Instructor(Long id, String occupation) {
         this.id = id;
