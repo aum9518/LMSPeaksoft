@@ -30,17 +30,8 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private String phoneNumber;
+    @Enumerated(value = EnumType.STRING)
     private Role role;
-
-    @OneToOne(cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.REFRESH})
-    private Student student;
-
-    @OneToOne(cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.REFRESH})
-    private Instructor instructor;
 
     public User(Long id, String firstName, String lastName,  String email, String password, String phoneNumber,Role role) {
         this.id = id;
