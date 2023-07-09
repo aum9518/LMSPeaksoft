@@ -15,6 +15,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,6 +31,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final JavaMailSender javaMailSender;
+
+    @Value("${spring.mail.username}")
+    private String fromEmail;
 
     @Autowired
     public AuthenticationServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, JavaMailSender javaMailSender) {
@@ -66,11 +71,15 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public SimpleResponse sendPasswordToEmail(EmailSend emailSend) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setFrom("cool.mego007@gmail.com");
+        simpleMailMessage.setFrom(fromEmail);
         simpleMailMessage.setTo(emailSend.to());
         simpleMailMessage.setSubject(emailSend.subject());
         simpleMailMessage.setText(emailSend.message());
         javaMailSender.send(simpleMailMessage);
-        return null;
+        log.info("email successfully was sent");
+        return SimpleResponse.builder()
+                .status(HttpStatus.OK)
+                .message("Success")
+                .build();
     }
 }
