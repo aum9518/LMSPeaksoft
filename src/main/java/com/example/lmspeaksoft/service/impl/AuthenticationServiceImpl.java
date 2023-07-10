@@ -7,7 +7,9 @@ import com.example.lmspeaksoft.dto.authentication.EmailSend;
 import com.example.lmspeaksoft.dto.authentication.RecoveryPasswordRequest;
 import com.example.lmspeaksoft.dto.authentication.SignInRequest;
 import com.example.lmspeaksoft.entity.User;
+import com.example.lmspeaksoft.enums.Format;
 import com.example.lmspeaksoft.exceptions.BadCredentialException;
+import com.example.lmspeaksoft.exceptions.BadRequestException;
 import com.example.lmspeaksoft.exceptions.NotFoundException;
 import com.example.lmspeaksoft.repository.UserRepository;
 import com.example.lmspeaksoft.service.AuthenticationService;
@@ -22,6 +24,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @Transactional
 //@RequiredArgsConstructor
@@ -34,6 +39,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Value("${spring.mail.username}")
     private String fromEmail;
+
+
 
     @Autowired
     public AuthenticationServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, JavaMailSender javaMailSender) {
@@ -60,16 +67,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .token(token)
                 .email(user.getEmail())
                 .build();
+
     }
 
-    @Override
-    public SimpleResponse recoveryPassword(RecoveryPasswordRequest recoveryPasswordRequest) {
-
-        return null;
-    }
-
+    private String email = null;
     @Override
     public SimpleResponse sendPasswordToEmail(EmailSend emailSend) {
+        email = emailSend.to();
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setFrom(fromEmail);
         simpleMailMessage.setTo(emailSend.to());
@@ -81,5 +85,25 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .status(HttpStatus.OK)
                 .message("Success")
                 .build();
+
     }
+    @Override
+    public SimpleResponse recoveryPassword(RecoveryPasswordRequest recoveryPasswordRequest) {
+        String email1 = email;
+
+        User user = userRepository.getUserByEmail(email1).orElseThrow(() -> {
+            log.error(String.format("User with email: %s is not found.", email1));
+            return new NotFoundException(String.format("User with email: %s is not found.", email1));
+        });
+        if (recoveryPasswordRequest.password().equals(recoveryPasswordRequest.repeatPassword())){
+            user.setPassword(recoveryPasswordRequest.password());
+            userRepository.save(user);
+        }else {log.error("password does not match each other"); throw new BadRequestException("Password does not match each other");}
+
+        return SimpleResponse.builder()
+                .status(HttpStatus.OK)
+                .message("Success")
+                .build();
+    }
+
 }

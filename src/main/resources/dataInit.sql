@@ -1,8 +1,8 @@
 insert into users (role, id, email, first_name, last_name, password, phone_number)
-values ('ADMIN', 1, 'admin@gmail.com', 'Manas', 'Abdugani uulu', 'Admin123', '+996221010101'),
-       ('INSTRUCTOR', 2, 'ariana@gmail.com', 'Ariana', 'Grande', 'Ariana123', '+996221010101'),
-       ('STUDENT', 3, 'jim@gmail.com', 'Jim', 'Carry', 'jim123', '+996221010101'),
-       ('INSTRUCTOR', 4, 'charlie@gmail.com', 'Charlie', 'Path', 'Charlie123', '+996221010101');
+values ('ADMIN', 1, 'admin@gmail.com', 'Manas', 'Abdugani uulu', '$2a$12$xn.XL/ZseJtGODxaKtbqf.05yQlma3hGcxHFH/ywUl7w3yrlEORrW', '+996221010101'),--Admin123
+       ('INSTRUCTOR', 2, 'ariana@gmail.com', 'Ariana', 'Grande', '$2a$12$HeGKw8DZyIps01STweVE2u/sLo5hmNIkn0Xx3PrUI3rW0rjbS0NJW', '+996221010101'),--Ariana123
+       ('STUDENT', 3, 'jim@gmail.com', 'Jim', 'Carry', '$2a$12$.TApL9vRYTpuaYSMKQV3c.M5Ug5RGmLScxT19sHxyXC6St9LR2Xji', '+996221010101'),--jim123
+       ('INSTRUCTOR', 4, 'charlie@gmail.com', 'Charlie', '', '$2a$12$oSJUz8EC8cpGIcEVnewJSeW061v5GxRSGGpjId4VS/nKFTJP5flKa', '+996221010101');--Charlie123
 
 
 insert into instructors(id, occupation, user_id)
