@@ -23,8 +23,14 @@ public class AuthAPI {
     }
 
     @PostMapping("/sendEmail")
-    @Operation(summary = "recovery password", description = "recovery password")
-    public SimpleResponse recoveryPassword(@RequestBody EmailSend emailSend){
+    @Operation(summary = "Send email", description = "Send email")
+    public SimpleResponse sendEmail(@RequestBody EmailSend emailSend){
         return authenticationService.sendPasswordToEmail(emailSend);
+    }
+
+    @PostMapping("/recover-password")
+    @Operation(summary = "recovery password", description = "recovery password")
+    public SimpleResponse recoverPassword(@RequestBody RecoveryPasswordRequest recoveryPasswordRequest){
+        return authenticationService.recoveryPassword(recoveryPasswordRequest);
     }
 }
