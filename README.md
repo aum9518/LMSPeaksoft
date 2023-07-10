@@ -1,2 +1,1 @@
-![Diagram](path/download/LMS-Страница 2.drawio-3.png)
-![img.png](img.png)
+![img_1.png](file:///Users/manasabduganiuulu/Downloads/LMS-%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0%202.drawio%20(1).svg)
