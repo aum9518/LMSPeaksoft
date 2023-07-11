@@ -6,7 +6,6 @@ import lombok.Builder;
 public record CourseRequest(
         String courseName,
         String image,
-        String description,
-        String duration
+        String description
 ) {
 }

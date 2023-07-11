@@ -5,6 +5,6 @@ import lombok.Builder;
 @Builder
 public record OptionTestRequest(
         String option,
-        Boolean statusOption
+        Boolean isTrue
 ) {
 }

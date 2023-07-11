@@ -14,6 +14,5 @@ public class CourseResponse {
     private String courseName;
     private String image;
     private String description;
-    private String duration;
     private LocalDate date;
 }

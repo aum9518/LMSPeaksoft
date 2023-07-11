@@ -34,8 +34,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Value("${spring.mail.username}")
     private String fromEmail;
-
-
+    private String email = null;
 
     @Autowired
     public AuthenticationServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, JavaMailSender javaMailSender) {
@@ -65,7 +64,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     }
 
-    private String email = null;
     @Override
     public SimpleResponse sendPasswordToEmail(EmailSend emailSend) {
         email = emailSend.to();
@@ -82,18 +80,21 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .build();
 
     }
+
     @Override
     public SimpleResponse recoveryPassword(RecoveryPasswordRequest recoveryPasswordRequest) {
         String email1 = email;
-
         User user = userRepository.getUserByEmail(email1).orElseThrow(() -> {
             log.error(String.format("User with email: %s is not found.", email1));
             return new NotFoundException(String.format("User with email: %s is not found.", email1));
         });
-        if (recoveryPasswordRequest.password().equals(recoveryPasswordRequest.repeatPassword())){
+        if (recoveryPasswordRequest.password().equals(recoveryPasswordRequest.repeatPassword())) {
             user.setPassword(recoveryPasswordRequest.password());
             userRepository.save(user);
-        }else {log.error("password does not match each other"); throw new BadRequestException("Password does not match each other");}
+        } else {
+            log.error("password does not match each other");
+            throw new BadRequestException("Password does not match each other");
+        }
 
         return SimpleResponse.builder()
                 .status(HttpStatus.OK)

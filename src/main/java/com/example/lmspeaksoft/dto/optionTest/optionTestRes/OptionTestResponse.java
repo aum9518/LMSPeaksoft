@@ -10,5 +10,5 @@ import lombok.*;
 public class OptionTestResponse {
     private Long id;
     private String option;
-    private Boolean statusOption;
+    private Boolean isTrue;
 }

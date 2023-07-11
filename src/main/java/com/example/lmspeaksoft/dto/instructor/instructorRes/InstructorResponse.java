@@ -1,5 +1,6 @@
 package com.example.lmspeaksoft.dto.instructor.instructorRes;
 
+import com.example.lmspeaksoft.enums.Role;
 import lombok.*;
 
 @Getter
@@ -9,6 +10,5 @@ import lombok.*;
 @Builder
 public class InstructorResponse {
     private Long id;
-//    private Role role;
-    private String occupation;
+    private String specialization;
 }
