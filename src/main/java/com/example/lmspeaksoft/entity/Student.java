@@ -45,7 +45,7 @@ public class Student {
     private List<TaskAnswer> taskAnswers;
 
 
-    @OneToMany(cascade = {CascadeType.DETACH,
+    @OneToMany(mappedBy = "student",cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH,
             CascadeType.REMOVE})
