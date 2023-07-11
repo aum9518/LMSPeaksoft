@@ -33,7 +33,7 @@ public class StudentServiceImpl implements StudentService {
     public SimpleResponse saveStudent(StudentRequest studentRequest) {
         Student student = new Student();
         User user = new User();
-        student.setFormat(studentRequest.format());
+        student.setStudyFormat(studentRequest.format());
         studentRepository.save(student);
         user.setFirstName(studentRequest.firstName());
         user.setLastName(studentRequest.lastName());
