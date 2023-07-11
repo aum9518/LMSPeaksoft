@@ -31,4 +31,8 @@ public class QuestionAnswer {
             CascadeType.MERGE,
             CascadeType.REFRESH,})
     private Question question;
+    @ManyToOne(cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,})
+    private TestAnswer testAnswer;
 }

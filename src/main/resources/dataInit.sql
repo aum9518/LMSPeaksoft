@@ -5,33 +5,33 @@ values ('ADMIN', 1, 'admin@gmail.com', 'Manas', 'Abdugani uulu', '$2a$12$xn.XL/Z
        ('INSTRUCTOR', 4, 'charlie@gmail.com', 'Charlie', '', '$2a$12$oSJUz8EC8cpGIcEVnewJSeW061v5GxRSGGpjId4VS/nKFTJP5flKa', '+996221010101');--Charlie123
 
 
-insert into instructors(id, occupation, user_id)
-VALUES (1, 'INSTRUCTOR', 2),
-       (2, 'INSTRUCTOR', 4);
+insert into instructors(id, user_id, specialization)
+VALUES (1, 2,'INSTRUCTOR'),
+       (2, 4,'INSTRUCTOR');
 
-insert into groups(create_date, id, instructor_id, description, group_name, image)
-VALUES (now(), 1, 1, 'Backend', 'Java-9', 'groups photo'),
-       (now(), 2, 2, 'Frontend', 'JavaScript-9', 'groups photo');
+insert into groups(create_date, id, description, group_name, image)
+VALUES (now(), 1, 'Backend', 'Java-9', 'groups photo'),
+       (now(), 2, 'Frontend', 'JavaScript-9', 'groups photo');
 
-insert into students(format, group_id, id, user_id)
-VALUES (null, null, 1, 3);
+insert into students(group_id, id, user_id, study_format)
+VALUES ( 1, 1,3,'ONLINE');
 
-insert into courses(date, duration, id, instructor_id, course_name, description, image)
-VALUES (now(), '12-12-2023', 1, 1, 'Java', 'Backend', 'course photo');
+insert into courses(date, group_id, id, course_name, description, image)
+VALUES (now(), 1, 1, 'Java', 'Backend', 'course photo');
 
 insert into lessons(course_id, id, lesson_name) VALUES
                                                     (1,1,'Array'),
                                                     (1,2,'Loop');
 
-insert into presentations(id, lesson_id, description, file, name) VALUES
+insert into presentations(id, lesson_id, description, format, name) VALUES
                                                                       (1,1,'Arrays explanation',null,'Array'),
                                                                       (2,2,'Loop explanation',null,'Loop');
 insert into video_lessons(id, lesson_id, description, link, name) VALUES
                                                                       (1,1,'Array','link lesson','Lesson'),
                                                                       (2,2,'Loop','link lesson','Lesson');
-insert into tasks(id, lesson_id, code, description, image, task_name) VALUES
-                                                                          (1,1,'Task code','add objects to array','photo','Array'),
-                                                                          (2,2,'Task code','find objects by loops','photo','Loop');
+insert into tasks(id, lesson_id, task_name) VALUES
+                                                                          (1,1,'Task code'),
+                                                                          (2,2,'Task code');
 insert into links(id, lesson_id, link, text) VALUES
                                                  (1,1,'Link to information','Array'),
                                                  (2,2,'Link to information','Loop');

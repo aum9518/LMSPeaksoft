@@ -9,6 +9,8 @@ import lombok.Setter;
 import java.util.List;
 import java.util.Map;
 
+import static java.awt.SystemColor.text;
+
 @Entity
 @Table(name = "tasks")
 @Getter
@@ -23,16 +25,8 @@ public class Task {
             allocationSize = 1)
     private Long id;
     private String taskName;
-    @Lob
-    private Map<TaskData,String> text;
-    @Lob
-    private Map<TaskData,String> file;
-    @Lob
-    private Map<TaskData,String> image;
-    @Lob
-    private Map<TaskData,String> code;
-    @Lob
-    private Map<TaskData,String> link;
+    @ElementCollection
+    private Map<TaskData,String> data;
 
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
@@ -45,13 +39,10 @@ public class Task {
             CascadeType.REFRESH},mappedBy = "task")
     private List<TaskAnswer>taskAnswers;
 
-    public Task(Long id, String taskName, Map<TaskData, String> text, Map<TaskData, String> file, Map<TaskData, String> image, Map<TaskData, String> code, Map<TaskData, String> link) {
+    public Task(Long id, String taskName, Map<TaskData, String> data) {
         this.id = id;
         this.taskName = taskName;
-        this.text = text;
-        this.file = file;
-        this.image = image;
-        this.code = code;
-        this.link = link;
+        this.data = data;
+
     }
 }
