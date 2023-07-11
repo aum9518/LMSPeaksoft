@@ -1,4 +1,12 @@
 package com.example.lmspeaksoft.dto.pagination;
 
-public record PaginationTestResponse() {
+import com.example.lmspeaksoft.dto.test.testRes.TestResponse;
+
+import java.util.List;
+
+public record PaginationTestResponse(
+        List<TestResponse>testResponses,
+        int size,
+        int page
+) {
 }
