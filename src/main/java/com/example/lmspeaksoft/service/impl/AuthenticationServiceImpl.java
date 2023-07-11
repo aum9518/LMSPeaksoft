@@ -7,14 +7,12 @@ import com.example.lmspeaksoft.dto.authentication.EmailSend;
 import com.example.lmspeaksoft.dto.authentication.RecoveryPasswordRequest;
 import com.example.lmspeaksoft.dto.authentication.SignInRequest;
 import com.example.lmspeaksoft.entity.User;
-import com.example.lmspeaksoft.enums.Format;
 import com.example.lmspeaksoft.exceptions.BadCredentialException;
 import com.example.lmspeaksoft.exceptions.BadRequestException;
 import com.example.lmspeaksoft.exceptions.NotFoundException;
 import com.example.lmspeaksoft.repository.UserRepository;
 import com.example.lmspeaksoft.service.AuthenticationService;
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,9 +21,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 @Transactional

@@ -20,7 +20,7 @@ public class OptionTest {
             allocationSize = 1)
     private Long id;
     private String option;
-    private Boolean statusOption;
+    private boolean isTrue;
 
 
     @ManyToOne(cascade = {CascadeType.DETACH,
@@ -28,9 +28,9 @@ public class OptionTest {
             CascadeType.REFRESH})
     private Question question;
 
-    public OptionTest(Long id, String option, Boolean statusOption) {
+    public OptionTest(Long id, String option, Boolean isTrue) {
         this.id = id;
         this.option = option;
-        this.statusOption = statusOption;
+        this.isTrue = isTrue;
     }
 }

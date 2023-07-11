@@ -1,6 +1,6 @@
 package com.example.lmspeaksoft.enums;
 
-public enum Format {
+public enum StudyFormat {
     ONLINE,
     OFFLINE;
 }

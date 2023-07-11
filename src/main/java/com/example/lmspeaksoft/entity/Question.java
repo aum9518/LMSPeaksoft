@@ -37,6 +37,13 @@ public class Question {
             CascadeType.REFRESH},mappedBy = "question")
     private List<OptionTest> optionTests;
 
+
+    @OneToMany(cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.REMOVE},mappedBy = "question")
+    private List<QuestionAnswer>questionAnswers;
+
     public Question(Long id, String questionName, QuestionType questionType) {
         this.id = id;
         this.questionName = questionName;
