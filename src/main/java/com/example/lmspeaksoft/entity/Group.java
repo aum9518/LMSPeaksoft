@@ -33,10 +33,11 @@ public class Group {
             CascadeType.REFRESH},mappedBy = "group")
     private List<Student> students;
 
-    @OneToMany(cascade = {CascadeType.DETACH,
+    @OneToMany(mappedBy = "group",cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH})
     private List<Course>courses;
+
 
 
 

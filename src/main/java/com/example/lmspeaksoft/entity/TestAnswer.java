@@ -36,7 +36,7 @@ public class TestAnswer {
             CascadeType.MERGE,
             CascadeType.REFRESH})
     private Student student;
-    @OneToMany(cascade = {CascadeType.DETACH,
+    @OneToMany(mappedBy = "testAnswer",cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH})
     private List<QuestionAnswer> questionAnswers;

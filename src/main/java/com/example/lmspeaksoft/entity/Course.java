@@ -43,8 +43,7 @@ public class Course {
 
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
-            CascadeType.REFRESH,
-            CascadeType.REMOVE})
+            CascadeType.REFRESH})
     private Group group;
 
     public Course(Long id, String courseName, String image, String description, LocalDate date) {
