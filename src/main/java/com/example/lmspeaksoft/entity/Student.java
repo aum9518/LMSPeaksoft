@@ -1,7 +1,7 @@
 package com.example.lmspeaksoft.entity;
 
 
-import com.example.lmspeaksoft.enums.Format;
+import com.example.lmspeaksoft.enums.StudyFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +23,7 @@ public class Student {
             allocationSize = 1)
     private Long id;
     @Enumerated(value = EnumType.STRING)
-    private Format format;
+    private StudyFormat studyFormat;
 
 
     @ManyToOne(cascade = {CascadeType.MERGE,
@@ -31,23 +31,30 @@ public class Student {
             CascadeType.REFRESH})
     private Group group;
 
+
     @OneToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH,
             CascadeType.REMOVE})
     private User user;
 
+
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH},mappedBy = "student")
     private List<TaskAnswer> taskAnswers;
 
+
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
-            CascadeType.REFRESH},mappedBy = "student")
-    private List<Test>tests;
-    public Student(Long id, Format format) {
+            CascadeType.REFRESH,
+            CascadeType.REMOVE})
+    private List<TestAnswer>testAnswers;
+
+
+
+    public Student(Long id, StudyFormat studyFormat) {
         this.id = id;
-        this.format = format;
+        this.studyFormat = studyFormat;
     }
 }

@@ -6,7 +6,7 @@ import com.example.lmspeaksoft.dto.student.studentReq.StudentRequest;
 import com.example.lmspeaksoft.dto.student.studentRes.StudentResponse;
 import com.example.lmspeaksoft.entity.Student;
 import com.example.lmspeaksoft.entity.User;
-import com.example.lmspeaksoft.enums.Format;
+import com.example.lmspeaksoft.enums.StudyFormat;
 import com.example.lmspeaksoft.repository.StudentRepository;
 import com.example.lmspeaksoft.repository.UserRepository;
 import com.example.lmspeaksoft.service.StudentService;
@@ -74,7 +74,7 @@ public class StudentServiceImpl implements StudentService {
                         new Object[]{id},
                         (rs, rowNum) -> new StudentResponse(
                                 rs.getLong("id"),
-                                rs.getObject("format",Format.class)
+                                rs.getObject("format", StudyFormat.class)
                         ));
 
     }

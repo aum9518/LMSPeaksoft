@@ -1,11 +1,13 @@
 package com.example.lmspeaksoft.entity;
 
+import com.example.lmspeaksoft.enums.TaskData;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "tasks")
@@ -21,9 +23,16 @@ public class Task {
             allocationSize = 1)
     private Long id;
     private String taskName;
-    private String description;
-    private String image;
-    private String code;
+    @Lob
+    private Map<TaskData,String> text;
+    @Lob
+    private Map<TaskData,String> file;
+    @Lob
+    private Map<TaskData,String> image;
+    @Lob
+    private Map<TaskData,String> code;
+    @Lob
+    private Map<TaskData,String> link;
 
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
@@ -36,11 +45,13 @@ public class Task {
             CascadeType.REFRESH},mappedBy = "task")
     private List<TaskAnswer>taskAnswers;
 
-    public Task(Long id, String taskName, String description, String image, String code) {
+    public Task(Long id, String taskName, Map<TaskData, String> text, Map<TaskData, String> file, Map<TaskData, String> image, Map<TaskData, String> code, Map<TaskData, String> link) {
         this.id = id;
         this.taskName = taskName;
-        this.description = description;
+        this.text = text;
+        this.file = file;
         this.image = image;
         this.code = code;
+        this.link = link;
     }
 }

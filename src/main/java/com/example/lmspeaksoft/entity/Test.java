@@ -21,12 +21,7 @@ public class Test {
             allocationSize = 1)
     private Long id;
     private String name;
-
-
-    @ManyToOne(cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.REFRESH})
-    private Student student;
+    private boolean isEnable;
 
 
     @ManyToOne(cascade = {CascadeType.DETACH,
@@ -46,8 +41,9 @@ public class Test {
             CascadeType.REFRESH},mappedBy = "test")
     private List<Question>questions;
 
-    public Test(Long id, String name) {
+    public Test(Long id, String name, boolean isEnable) {
         this.id = id;
         this.name = name;
+        this.isEnable = isEnable;
     }
 }

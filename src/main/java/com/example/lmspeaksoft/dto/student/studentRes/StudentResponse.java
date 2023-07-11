@@ -1,6 +1,6 @@
 package com.example.lmspeaksoft.dto.student.studentRes;
 
-import com.example.lmspeaksoft.enums.Format;
+import com.example.lmspeaksoft.enums.StudyFormat;
 
 import lombok.*;
 
@@ -10,9 +10,9 @@ import lombok.*;
 @Builder
 public class StudentResponse {
     private Long id;
-    private Format format;
+    private StudyFormat format;
 
-    public StudentResponse(Long id, Format format) {
+    public StudentResponse(Long id, StudyFormat format) {
         this.id = id;
         this.format = format;
     }

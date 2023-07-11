@@ -25,29 +25,33 @@ public class Course {
     private String courseName;
     private String image;
     private String description;
-    private LocalDate duration;
     private LocalDate date;
 
 
-
-
-    @ManyToOne(cascade = {CascadeType.DETACH,
+    @ManyToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH})
-    private Instructor instructor;
+    private List<Instructor> instructors;
 
 
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
-            CascadeType.REFRESH},mappedBy = "course")
+            CascadeType.REFRESH},
+            mappedBy = "course")
     private List<Lesson> lessons;
 
-    public Course(Long id, String courseName, String image, String description, LocalDate duration, LocalDate date) {
+
+    @ManyToOne(cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.REMOVE})
+    private Group group;
+
+    public Course(Long id, String courseName, String image, String description, LocalDate date) {
         this.id = id;
         this.courseName = courseName;
         this.image = image;
         this.description = description;
-        this.duration = duration;
         this.date = date;
     }
 }

@@ -20,7 +20,7 @@ public class Presentation {
     private Long id;
     private String name;
     private String description;
-    private String file;
+    private String format;
 
 
     @ManyToOne(cascade = {CascadeType.DETACH,
@@ -28,10 +28,10 @@ public class Presentation {
             CascadeType.REFRESH})
     private Lesson lesson;
 
-    public Presentation(Long id, String name, String description, String file) {
+    public Presentation(Long id, String name, String description, String format) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.file = file;
+        this.format = format;
     }
 }

@@ -21,25 +21,20 @@ public class Instructor {
             sequenceName = "instructor_seq",
             allocationSize = 1)
     private Long id;
-    private String occupation;
+    private String specialization;
 
 
 
-
-    @OneToMany(cascade = {CascadeType.DETACH,
+    @ManyToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH},mappedBy = "instructor")
    private List<Course>courses;
 
-    @OneToMany(cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.REFRESH},mappedBy = "instructor")
-    private List<Group>groups;
     @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.REMOVE})
     private User user;
 
-    public Instructor(Long id, String occupation) {
+    public Instructor(Long id, String specialization) {
         this.id = id;
-        this.occupation = occupation;
+        this.specialization = specialization;
     }
 }

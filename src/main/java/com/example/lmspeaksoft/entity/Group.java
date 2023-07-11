@@ -28,17 +28,16 @@ public class Group {
 
 
 
-
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH},mappedBy = "group")
     private List<Student> students;
 
-
-    @ManyToOne(cascade = {CascadeType.DETACH,
+    @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH})
-    private Instructor instructor;
+    private List<Course>courses;
+
 
 
     public Group(Long id, String groupName, String image, String description, LocalDate createDate) {

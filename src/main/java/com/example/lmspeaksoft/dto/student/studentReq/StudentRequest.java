@@ -1,6 +1,6 @@
 package com.example.lmspeaksoft.dto.student.studentReq;
 
-import com.example.lmspeaksoft.enums.Format;
+import com.example.lmspeaksoft.enums.StudyFormat;
 
 import lombok.Builder;
 
@@ -12,6 +12,6 @@ public record StudentRequest(
         String email,
         String password,
         String phoneNumber,
-        Format format
+        StudyFormat format
 ) {
 }

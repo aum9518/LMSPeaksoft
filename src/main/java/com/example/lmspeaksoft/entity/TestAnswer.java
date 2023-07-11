@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "test_answers")
 @Getter
@@ -20,23 +22,33 @@ public class TestAnswer {
     private Long id;
     private String testName;
     private int correct;
-    private int unCorrect;
+    private int inCorrect;
     private double point;
-    private boolean statusTest;
+    private boolean isAccepted;
 
 
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH})
     private Test test;
-    
 
-    public TestAnswer(Long id, String testName, int correct, int unCorrect, double point, boolean statusTest) {
+    @ManyToOne(cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH})
+    private Student student;
+    @OneToMany(cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH})
+    private List<QuestionAnswer> questionAnswers;
+
+
+
+    public TestAnswer(Long id, String testName, int correct, int inCorrect, double point, boolean isAccepted) {
         this.id = id;
         this.testName = testName;
         this.correct = correct;
-        this.unCorrect = unCorrect;
+        this.inCorrect = inCorrect;
         this.point = point;
-        this.statusTest = statusTest;
+        this.isAccepted = isAccepted;
     }
 }
