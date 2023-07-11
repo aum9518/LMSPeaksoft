@@ -23,14 +23,12 @@ public class Instructor {
     private Long id;
     private String specialization;
 
-
-
     @ManyToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
-            CascadeType.REFRESH},mappedBy = "instructor")
-   private List<Course>courses;
+            CascadeType.REFRESH}, mappedBy = "instructors")
+    private List<Course> courses;
 
-    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
     private User user;
 
     public Instructor(Long id, String specialization) {
