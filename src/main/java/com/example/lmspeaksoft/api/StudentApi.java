@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class StudentApi {
 
-    private final StudentService service;
+//    private final StudentService service;
 }

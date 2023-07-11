@@ -21,7 +21,7 @@ public class InstructorServiceImpl implements InstructorService {
     @Override
     public SimpleResponse saveInstructor(InstructorRequest instructorRequest) {
         Instructor instructor = new Instructor();
-        instructor.setOccupation(instructor.getOccupation());
+        instructor.setSpecialization(instructor.getSpecialization());
         instructorRepository.save(instructor);
         return SimpleResponse
                 .builder()

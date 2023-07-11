@@ -66,7 +66,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentResponse getById(Long id) {
         String sql = " SELECT  s.id,u.first_name,u.last_name, s.format,u.email,u.phone_number,u.password" +
                 " FROM students s " +
-                " JOIN users u on s.id = u.student_id" +
+                " JOIN users u on s.user_id = u.id" +
                 " WHERE s.id = ?";
 
          return (StudentResponse) jdbcTemplate.query(
