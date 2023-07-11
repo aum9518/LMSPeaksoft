@@ -1,5 +1,6 @@
 package com.example.lmspeaksoft.dto.taksAnswer.taksAnswerRes;
 
+import com.example.lmspeaksoft.enums.TaskAnswerStatus;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -11,10 +12,10 @@ import java.time.LocalDate;
 @Builder
 public class TaskAnswerResponse {
     private Long id;
-    private String name;
-    private LocalDate deadline;
     private String file;
     private String text;
     private String comment;
+    private TaskAnswerStatus taskAnswerStatus;
+
 
 }

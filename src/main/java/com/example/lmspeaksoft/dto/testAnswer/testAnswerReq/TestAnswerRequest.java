@@ -4,10 +4,10 @@ import lombok.Builder;
 
 @Builder
 public record TestAnswerRequest(
-        String nameTest,
+        String testName,
         int correct,
         int unCorrect,
         double point,
-        boolean statusTest
+        boolean isAccepted
 ) {
 }
