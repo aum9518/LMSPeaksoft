@@ -24,6 +24,8 @@ public class Instructor {
     private String occupation;
 
 
+
+
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH},mappedBy = "instructor")
