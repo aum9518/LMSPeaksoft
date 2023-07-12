@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -54,4 +55,12 @@ public class Course {
         this.description = description;
         this.date = date;
     }
+
+    public void addInstructor(Instructor instructor) {
+        if (instructors == null) {
+            instructors = new ArrayList<>();
+        }
+        instructors.add(instructor);
+    }
+
 }
