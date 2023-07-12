@@ -1,18 +1,17 @@
 package com.example.lmspeaksoft.dto.task.taskRes;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.example.lmspeaksoft.enums.TaskData;
+import lombok.*;
+
+import java.util.Map;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class TaskResponse {
     private Long id;
     private String taskName;
-    private String description;
-    private String image;
-    private String code;
+    private Map<TaskData,String> data;
 }

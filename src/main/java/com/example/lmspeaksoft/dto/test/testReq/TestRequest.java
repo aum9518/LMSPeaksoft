@@ -4,6 +4,7 @@ import lombok.Builder;
 
 @Builder
 public record TestRequest(
-        String name
+        String name,
+        boolean isEnable
 ) {
 }

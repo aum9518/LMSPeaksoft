@@ -10,4 +10,5 @@ import lombok.*;
 public class TestResponse {
     private Long id;
     private String name;
+    private boolean isEnable;
 }
