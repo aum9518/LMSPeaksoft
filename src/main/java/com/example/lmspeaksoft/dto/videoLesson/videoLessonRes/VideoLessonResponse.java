@@ -4,7 +4,6 @@ import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class VideoLessonResponse {
@@ -12,4 +11,11 @@ public class VideoLessonResponse {
     private String name;
     private String description;
     private String link;
+
+    public VideoLessonResponse(Long id, String name, String description, String link) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.link = link;
+    }
 }
