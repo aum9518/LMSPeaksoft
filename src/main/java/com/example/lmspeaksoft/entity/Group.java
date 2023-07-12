@@ -27,7 +27,6 @@ public class Group {
     private LocalDate createDate;
 
 
-
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH},mappedBy = "group")
