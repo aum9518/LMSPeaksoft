@@ -121,7 +121,7 @@ public class CourseServiceImpl implements CourseService {
 
         return SimpleResponse.builder()
                 .status(HttpStatus.OK)
-                .message(String.format("Instructor with id: " + instructorId + "  " + " Course with id: " + courseId + " is assigning"))
+                .message(String.format("Instructor with id: " + instructorId + "  " + " Course with id: " + courseId + " is assigning!"))
                 .build();
     }
 }
