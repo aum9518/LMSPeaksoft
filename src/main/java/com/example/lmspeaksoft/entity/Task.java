@@ -26,6 +26,7 @@ public class Task {
     private Long id;
     private String taskName;
     @ElementCollection
+    @Enumerated(value = EnumType.STRING)
     private Map<TaskData,String> data;
 
     @ManyToOne(cascade = {CascadeType.DETACH,
