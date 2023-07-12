@@ -55,6 +55,7 @@ public class Lesson {
             CascadeType.MERGE,
             CascadeType.REFRESH},mappedBy = "lesson")
     private List<Presentation>presentations;
+
     public Lesson(Long id, String lessonName) {
         this.id = id;
         this.lessonName = lessonName;
