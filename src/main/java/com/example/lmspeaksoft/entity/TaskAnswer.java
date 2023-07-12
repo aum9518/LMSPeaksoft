@@ -24,6 +24,7 @@ public class TaskAnswer {
     private String file;
     private String text;
     private String comment;
+    @Enumerated(value = EnumType.STRING)
     private TaskAnswerStatus taskAnswerStatus;
 
 
