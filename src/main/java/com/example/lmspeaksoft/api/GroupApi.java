@@ -4,10 +4,13 @@ import com.example.lmspeaksoft.dto.SimpleResponse;
 import com.example.lmspeaksoft.dto.group.groupReq.GroupRequest;
 import com.example.lmspeaksoft.dto.group.groupRes.GroupResponse;
 import com.example.lmspeaksoft.dto.pagination.PaginationGroupResponse;
+import com.example.lmspeaksoft.dto.student.studentRes.StudentResponse;
 import com.example.lmspeaksoft.service.GroupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/groups")
@@ -35,7 +38,7 @@ public class GroupApi {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/{id}")
-    public GroupResponse getGroupById(@PathVariable Long id){
+    public GroupResponse getAllGroupById(@PathVariable Long id){
         return groupService.getGroupById(id);
     }
 
@@ -44,5 +47,11 @@ public class GroupApi {
     public SimpleResponse deleteGroup(@PathVariable Long id) {
         return groupService.deleteGroupById(id);
 
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/{id}")
+    public List<StudentResponse> getAllStudentsGroupById(@PathVariable Long id){
+        return groupService.getAllStudentsByGroupId(id);
     }
 }

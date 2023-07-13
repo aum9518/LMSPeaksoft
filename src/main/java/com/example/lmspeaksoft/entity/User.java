@@ -23,7 +23,8 @@ public class User implements UserDetails {
             strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "user_gen",
             sequenceName = "user_seq",
-            allocationSize = 1)
+            allocationSize = 1,
+    initialValue = 6)
     private Long id;
     private String firstName;
     private String lastName;
