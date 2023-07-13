@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -35,7 +36,7 @@ public class Group {
     @OneToMany(mappedBy = "group",cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH})
-    private List<Course>courses;
+    private List<Course>courses = new ArrayList<>();
 
 
 
@@ -45,5 +46,9 @@ public class Group {
         this.image = image;
         this.description = description;
         this.createDate = createDate;
+    }
+
+    public void addCourse(Course course) {
+        this.courses.add(course);
     }
 }

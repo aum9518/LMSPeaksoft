@@ -5,6 +5,11 @@ import lombok.Builder;
 
 @Builder
 public record InstructorRequest (
+        String firstName,
+        String lastName,
+        String email,
+        String password,
+        String phoneNumber,
         String specialization
 ){
 }

@@ -1,11 +1,11 @@
 package com.example.lmspeaksoft.entity;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 
@@ -27,19 +27,16 @@ public class Course {
     private String description;
     private LocalDate date;
 
-
     @ManyToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH})
     private List<Instructor> instructors;
-
 
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.REFRESH},
             mappedBy = "course")
     private List<Lesson> lessons;
-
 
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
@@ -53,5 +50,19 @@ public class Course {
         this.image = image;
         this.description = description;
         this.date = date;
+    }
+
+    public void addInstructor(Instructor instructor) {
+        if (instructors == null) {
+            instructors = new ArrayList<>();
+        }
+        instructors.add(instructor);
+    }
+
+    public void addLesson(Lesson lesson) {
+        if (lessons == null) {
+            lessons = new ArrayList<>();
+        }
+        lessons.add(lesson);
     }
 }
