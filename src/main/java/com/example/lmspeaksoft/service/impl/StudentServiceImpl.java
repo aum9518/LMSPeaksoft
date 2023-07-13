@@ -62,19 +62,20 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentResponse getById(Long id) {
-        String sql = " SELECT  s.id,u.first_name,u.last_name, s.format,u.email,u.phone_number,u.password" +
-                " FROM students s " +
-                " JOIN users u on s.user_id = u.id" +
-                " WHERE s.id = ?";
+//        String sql = " SELECT  s.id,u.first_name,u.last_name, s.format,u.email,u.phone_number,u.password" +
+//                " FROM students s " +
+//                " JOIN users u on s.user_id = u.id" +
+//                " WHERE s.id = ?";
+//
+//         return (StudentResponse) jdbcTemplate.query(
+//                        sql,
+//                        new Object[]{id},
+//                        (rs, rowNum) -> new StudentResponse(
+//                                rs.getLong("id"),
+//                                rs.getObject("format", StudyFormat.class)
+//                        ));
 
-         return (StudentResponse) jdbcTemplate.query(
-                        sql,
-                        new Object[]{id},
-                        (rs, rowNum) -> new StudentResponse(
-                                rs.getLong("id"),
-                                rs.getObject("format", StudyFormat.class)
-                        ));
-
+        return null;
     }
 
     @Override

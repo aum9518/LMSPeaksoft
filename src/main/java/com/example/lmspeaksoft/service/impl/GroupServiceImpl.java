@@ -4,7 +4,9 @@ import com.example.lmspeaksoft.dto.SimpleResponse;
 import com.example.lmspeaksoft.dto.group.groupReq.GroupRequest;
 import com.example.lmspeaksoft.dto.group.groupRes.GroupResponse;
 import com.example.lmspeaksoft.dto.pagination.PaginationGroupResponse;
+import com.example.lmspeaksoft.dto.student.studentRes.StudentResponse;
 import com.example.lmspeaksoft.entity.Group;
+import com.example.lmspeaksoft.enums.StudyFormat;
 import com.example.lmspeaksoft.exceptions.NotFoundException;
 import com.example.lmspeaksoft.repository.GroupRepository;
 import com.example.lmspeaksoft.service.GroupService;
@@ -72,7 +74,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public GroupResponse getGroupById(Long id) {
-            String sql = "select g.id, g.group_name, g.image, g.description, g.create_Date from groups g where g.id = ?";
+        String sql = "select g.id, g.group_name, g.image, g.description, g.create_Date from groups g where g.id = ?";
 
         List<GroupResponse> query = jdbcTemplate.query(
                 sql,
@@ -98,5 +100,9 @@ public class GroupServiceImpl implements GroupService {
                 .status(HttpStatus.OK)
                 .message("Delete Group..")
                 .build();
+    }
+    @Override
+    public List<StudentResponse> getAllStudentsByGroupId(Long id) {
+        return groupRepository.getAllStudentsByGroupId(id);
     }
 }
