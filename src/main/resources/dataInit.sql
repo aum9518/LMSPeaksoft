@@ -14,7 +14,6 @@ insert into instructors(id, user_id, specialization)
 VALUES (1, 2, 'INSTRUCTOR'),
        (2, 3, 'INSTRUCTOR');
 
-
 insert into groups(create_date, id, description, group_name, image)
 VALUES (now(), 1, 'Backend', 'Java-9', 'groups java'),
        (now(), 2, 'Frontend', 'JavaScript-9', 'groups js'),
