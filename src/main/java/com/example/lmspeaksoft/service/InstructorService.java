@@ -3,6 +3,7 @@ package com.example.lmspeaksoft.service;
 import com.example.lmspeaksoft.dto.SimpleResponse;
 import com.example.lmspeaksoft.dto.instructor.instructorReq.InstructorRequest;
 import com.example.lmspeaksoft.dto.instructor.instructorRes.InstructorResponse;
+import com.example.lmspeaksoft.dto.pagination.PaginationInstructorResponse;
 
 public interface InstructorService {
     SimpleResponse saveInstructor(InstructorRequest instructorRequest);
@@ -11,7 +12,7 @@ public interface InstructorService {
 
     SimpleResponse updateInstructor(Long id, InstructorRequest instructorRequest);
 
-    InstructorResponse getAllInstructor();
+    PaginationInstructorResponse getAllInstructor(int currentPage, int pageSize);
 
     SimpleResponse deleteInstructorById(Long id);
 
