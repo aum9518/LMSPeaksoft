@@ -18,6 +18,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Transactional
@@ -30,7 +31,7 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public SimpleResponse saveGroup(GroupRequest groupRequest) {
         Group group = new Group();
-        group.setGroupName(groupRequest.groupName());
+        group.setGroupName(groupRequest.group_name());
         group.setImage(groupRequest.image());
         group.setDescription(groupRequest.description());
         group.setCreateDate(LocalDate.now());
@@ -57,7 +58,7 @@ public class GroupServiceImpl implements GroupService {
     public SimpleResponse updateGroup(Long id, GroupRequest groupRequest) {
         Group group = groupRepository.findById(id).orElseThrow(
                 () -> new NotFoundException("Group with id: " + id + "not found"));
-        group.setGroupName(groupRequest.groupName());
+        group.setGroupName(groupRequest.group_name());
         group.setImage(groupRequest.image());
         group.setDescription(groupRequest.description());
         group.setCreateDate(LocalDate.now());
@@ -71,20 +72,20 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public GroupResponse getGroupById(Long id) {
-            String sql = "select id, groupName, image, description, createDate from groups where id = ?";
+            String sql = "select g.id, g.group_name, g.image, g.description, g.create_Date from groups g where g.id = ?";
 
-            return (GroupResponse) jdbcTemplate.query(
-                    sql,
-                    new Object[]{id},
-                    (rs, rowNum) -> new GroupResponse(
-                            rs.getLong("id"),
-                            rs.getString("groupName"),
-                            rs.getString("image"),
-                            rs.getString("description"),
-                            rs.getDate("createDate").toLocalDate()
-                    )
-            );
-
+        List<GroupResponse> query = jdbcTemplate.query(
+                sql,
+                new Object[]{id},
+                (rs, rowNum) -> new GroupResponse(
+                        rs.getLong("id"),
+                        rs.getString("group_name"),
+                        rs.getString("image"),
+                        rs.getString("description"),
+                        rs.getDate("create_Date").toLocalDate()
+                )
+        );
+        return query.isEmpty() ? null : query.get(0);
     }
 
     @Override

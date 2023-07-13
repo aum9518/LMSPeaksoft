@@ -23,6 +23,7 @@ public class Question {
             allocationSize = 1)
     private Long id;
     private String questionName;
+    @Enumerated(value = EnumType.STRING)
     private QuestionType questionType;
 
 

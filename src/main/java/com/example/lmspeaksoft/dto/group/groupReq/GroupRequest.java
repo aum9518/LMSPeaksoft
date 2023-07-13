@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Builder
 public record GroupRequest(
-        String groupName,
+        String group_name,
         String image,
         String description
 
