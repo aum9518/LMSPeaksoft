@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,34 +31,41 @@ public class Lesson {
 
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
-            CascadeType.REFRESH},mappedBy = "lesson")
-    private List<Task>tasks;
+            CascadeType.REFRESH}, mappedBy = "lesson")
+    private List<Task> tasks;
 
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
-            CascadeType.REFRESH},mappedBy = "lesson")
+            CascadeType.REFRESH}, mappedBy = "lesson")
     private List<Test> tests;
 
 
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
-            CascadeType.REFRESH},mappedBy = "lesson")
-    private List<VideoLesson>videoLessons;
+            CascadeType.REFRESH}, mappedBy = "lesson")
+    private List<VideoLesson> videoLessons;
 
 
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
-            CascadeType.REFRESH},mappedBy = "lesson")
-    private List<Link>links;
+            CascadeType.REFRESH}, mappedBy = "lesson")
+    private List<Link> links;
 
 
     @OneToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
-            CascadeType.REFRESH},mappedBy = "lesson")
-    private List<Presentation>presentations;
+            CascadeType.REFRESH}, mappedBy = "lesson")
+    private List<Presentation> presentations;
 
     public Lesson(Long id, String lessonName) {
         this.id = id;
         this.lessonName = lessonName;
+    }
+
+    public void addPresentation(Presentation presentation) {
+        if (presentations == null) {
+            presentations = new ArrayList<>();
+        }
+        presentations.add(presentation);
     }
 }
