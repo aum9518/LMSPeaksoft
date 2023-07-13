@@ -4,8 +4,6 @@ import com.example.lmspeaksoft.dto.SimpleResponse;
 import com.example.lmspeaksoft.dto.pagination.PaginationStudentResponse;
 import com.example.lmspeaksoft.dto.student.studentReq.StudentRequest;
 import com.example.lmspeaksoft.dto.student.studentRes.StudentResponse;
-import com.example.lmspeaksoft.entity.Student;
-import com.example.lmspeaksoft.entity.User;
 import com.example.lmspeaksoft.enums.StudyFormat;
 import com.example.lmspeaksoft.repository.StudentRepository;
 import com.example.lmspeaksoft.repository.UserRepository;
@@ -15,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -31,21 +28,22 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public SimpleResponse saveStudent(StudentRequest studentRequest) {
-        Student student = new Student();
-        User user = new User();
-        student.setStudyFormat(studentRequest.format());
-        studentRepository.save(student);
-        user.setFirstName(studentRequest.firstName());
-        user.setLastName(studentRequest.lastName());
-        user.setEmail(studentRequest.email());
-        user.setPassword(studentRequest.password());
-        user.setPhoneNumber(studentRequest.phoneNumber());
-        userRepository.save(user);
-        return SimpleResponse
-                .builder()
-                .status(HttpStatus.OK)
-                .message("successfully saved")
-                .build();
+//        Student student = new Student();
+//        User user = new User();
+//        student.setStudyFormat(studentRequest.format());
+//        studentRepository.save(student);
+//        user.setFirstName(studentRequest.firstName());
+//        user.setLastName(studentRequest.lastName());
+//        user.setEmail(studentRequest.email());
+//        user.setPassword(studentRequest.password());
+//        user.setPhoneNumber(studentRequest.phoneNumber());
+//        userRepository.save(user);
+//        return SimpleResponse
+//                .builder()
+//                .status(HttpStatus.OK)
+//                .message("successfully saved")
+//                .build();
+        return null;
     }
 
     @Override

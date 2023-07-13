@@ -1,12 +1,13 @@
 package com.example.lmspeaksoft.dto.taksAnswer.taksAnswerReq;
 
+import com.example.lmspeaksoft.enums.TaskAnswerStatus;
 import lombok.Builder;
 
 @Builder
 public record TaskAnswerRequest(
-        String name,
         String file,
         String text,
-        String comment
+        String comment,
+        TaskAnswerStatus taskAnswerStatus
 ) {
 }

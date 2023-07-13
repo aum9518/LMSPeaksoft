@@ -10,10 +10,10 @@ import lombok.*;
 @Builder
 public class StudentResponse {
     private Long id;
-    private StudyFormat format;
+    private StudyFormat studyFormat;
 
-    public StudentResponse(Long id, StudyFormat format) {
+    public StudentResponse(Long id, StudyFormat studyFormat) {
         this.id = id;
-        this.format = format;
+        this.studyFormat = studyFormat;
     }
 }

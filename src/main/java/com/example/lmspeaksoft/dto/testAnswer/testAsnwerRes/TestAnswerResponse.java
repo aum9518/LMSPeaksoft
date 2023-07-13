@@ -8,9 +8,9 @@ import lombok.*;
 @Builder
 public class TestAnswerResponse {
     private Long id;
-    private String nameTest;
+    private String testName;
     private int correct;
-    private int unCorrect;
+    private int inCorrect;
     private double point;
-    private boolean statusTest;
+    private boolean isAccepted;
 }
