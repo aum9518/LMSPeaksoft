@@ -50,7 +50,7 @@ public class GroupApi {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/studentsGroupById")
     public List<StudentResponse> getAllStudentsGroupById(@PathVariable Long id){
         return groupService.getAllStudentsByGroupId(id);
     }

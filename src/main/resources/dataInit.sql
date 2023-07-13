@@ -14,7 +14,6 @@ insert into instructors(id, user_id, specialization)
 VALUES (1, 2, 'INSTRUCTOR'),
        (2, 3, 'INSTRUCTOR');
 
-
 insert into groups(create_date, id, description, group_name, image)
 VALUES (now(), 1, 'Backend', 'Java-9', 'groups java'),
        (now(), 2, 'Frontend', 'JavaScript-9', 'groups js'),
@@ -32,8 +31,7 @@ VALUES (now(), 1, 1, 'Java', 'Backend', 'course photo'),
 
 insert into courses_instructors(courses_id, instructors_id)
 VALUES (1,1),
-       (2,2),
-       (3,3);
+       (2,2);
 
 insert into lessons(course_id, id, lesson_name)
 VALUES (1, 1, 'Array'),
@@ -76,9 +74,9 @@ VALUES (1,'testingOP',2,3,5,true,1,1),
        (3,'testingOP',2,3,5,true,1,1);
 
 insert into task_data(data_key,task_id,data)
-VALUES ('3',1,'String'),
-       ('4',2,'String'),
-       ('5',3,'String');
+VALUES ('1',1,'String'),
+       ('2',2,'String'),
+       ('3',3,'String');
 
 insert into task_answers(id,file,text,comment,task_answer_status,student_id,task_id)
 VALUES (1,'file','text','comment','ACCEPTED',1,1),
