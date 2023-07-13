@@ -5,16 +5,10 @@ import com.example.lmspeaksoft.dto.course.courseReq.CourseRequest;
 import com.example.lmspeaksoft.dto.course.courseRes.CourseResponse;
 import com.example.lmspeaksoft.dto.pagination.PaginationCourseResponse;
 import com.example.lmspeaksoft.service.CourseService;
-import jdk.dynalink.linker.support.SimpleLinkRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PreDestroy;
-import javax.annotation.RegEx;
-import javax.ws.rs.PATCH;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
 
 @RestController
 @RequestMapping("/api/courses")
