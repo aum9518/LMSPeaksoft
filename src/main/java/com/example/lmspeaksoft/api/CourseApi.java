@@ -17,10 +17,10 @@ public class CourseApi {
 
     private final CourseService courseService;
 
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping("/{id}/save")
-    public SimpleResponse save(@PathVariable Long id, @RequestBody CourseRequest courseRequest) {
-        return courseService.saveCourse(id, courseRequest);
+//    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/save")
+    public SimpleResponse save(@RequestBody CourseRequest courseRequest) {
+        return courseService.saveCourse(courseRequest);
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN', 'INSTRUCTOR', 'STUDENT')")
@@ -30,25 +30,25 @@ public class CourseApi {
         return courseService.getAllCourses(page, size);
     }
 
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'INSTRUCTOR', 'STUDENT')")
+//    @PreAuthorize("hasAnyAuthority('ADMIN', 'INSTRUCTOR', 'STUDENT')")
     @GetMapping("/{id}")
     public CourseResponse getById(@PathVariable Long id) {
         return courseService.getById(id);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{id}/update")
     public SimpleResponse update(@PathVariable Long id, @RequestBody CourseRequest courseRequest) {
         return courseService.updateCourse(id, courseRequest);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{id}/delete")
     public SimpleResponse delete(@PathVariable Long id) {
         return courseService.deleteCourseById(id);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/{instructorId}/{courseId}/assign")
     public SimpleResponse assign(@PathVariable Long instructorId, @PathVariable Long courseId) {
         return courseService.assignInstructorToCourse(instructorId, courseId);

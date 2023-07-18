@@ -28,6 +28,7 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public SimpleResponse saveLesson(Long courseId, LessonRequest lessonRequest) {
+
         Course course = courseRepository.findById(courseId).orElseThrow(() ->
                 new NotFoundException("Course with id: " + courseId + " is not found!"));
         Lesson lesson = new Lesson();
@@ -44,6 +45,7 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public PaginationLessonResponse getAll(int page, int size) {
+
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<LessonResponse> allLesson = lessonRepository.getAllLessons(pageable);
         return PaginationLessonResponse.builder()
@@ -55,12 +57,14 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public LessonResponse getLessonById(Long id) {
+
         return lessonRepository.getLessonById(id).orElseThrow(() ->
                 new NotFoundException("Lesson with id: " + id + " is not found!"));
     }
 
     @Override
     public SimpleResponse updateLesson(Long id, LessonRequest lessonRequest) {
+
         Lesson lesson = lessonRepository.findById(id).orElseThrow(() ->
                 new NotFoundException("Lesson with id: " + id + " is not found!"));
         lesson.setLessonName(lessonRequest.lessonName());
@@ -74,6 +78,7 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public SimpleResponse deleteLessonById(Long id) {
+
         Lesson lesson = lessonRepository.findById(id).orElseThrow(() ->
                 new NotFoundException("Lesson with id: " + id + " is not found!"));
         lesson.setCourse(null);

@@ -5,7 +5,6 @@ import com.example.lmspeaksoft.dto.course.courseReq.CourseRequest;
 import com.example.lmspeaksoft.dto.course.courseRes.CourseResponse;
 import com.example.lmspeaksoft.dto.pagination.PaginationCourseResponse;
 import com.example.lmspeaksoft.entity.Course;
-import com.example.lmspeaksoft.entity.Group;
 import com.example.lmspeaksoft.entity.Instructor;
 import com.example.lmspeaksoft.exceptions.BadRequestException;
 import com.example.lmspeaksoft.exceptions.NotFoundException;
@@ -35,17 +34,13 @@ public class CourseServiceImpl implements CourseService {
     private final InstructorRepository instructorRepository;
 
     @Override
-    public SimpleResponse saveCourse(Long groupId, CourseRequest courseRequest) {
-        Group group = groupRepository.findById(groupId).orElseThrow(() ->
-                new NotFoundException("Group with id: " + groupId + " is not found!"));
+    public SimpleResponse saveCourse(CourseRequest courseRequest) {
         Course course = new Course();
         course.setCourseName(courseRequest.courseName());
         course.setImage(courseRequest.image());
         course.setDescription(courseRequest.description());
         course.setDate(LocalDate.now());
-        group.addCourse(course);
-
-        course.setGroup(group);
+        course.setGroup(null);
         courseRepository.save(course);
 
         return SimpleResponse.builder()
