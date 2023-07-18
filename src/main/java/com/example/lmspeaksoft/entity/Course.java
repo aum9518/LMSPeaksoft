@@ -1,8 +1,7 @@
 package com.example.lmspeaksoft.entity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.time.ZonedDateTime;
@@ -14,13 +13,15 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Course {
     @Id
     @GeneratedValue(generator = "course_gen",
             strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "course_gen",
             sequenceName = "course_seq",
-            allocationSize = 1)
+            allocationSize = 1,
+    initialValue = 4)
     private Long id;
     private String courseName;
     private String image;
@@ -44,13 +45,6 @@ public class Course {
             CascadeType.REMOVE})
     private Group group;
 
-    public Course(Long id, String courseName, String image, String description, LocalDate date) {
-        this.id = id;
-        this.courseName = courseName;
-        this.image = image;
-        this.description = description;
-        this.date = date;
-    }
 
     public void addInstructor(Instructor instructor) {
         if (instructors == null) {

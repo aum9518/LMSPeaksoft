@@ -68,4 +68,11 @@ public class Lesson {
         }
         presentations.add(presentation);
     }
+
+    public void addLink(Link link) {
+        if (links == null) {
+            links = new ArrayList<>();
+        }
+        links.add(link);
+    }
 }

@@ -8,7 +8,7 @@ import com.example.lmspeaksoft.dto.pagination.PaginationCourseResponse;
 
 public interface CourseService {
 
-    SimpleResponse saveCourse(Long groupId, CourseRequest courseRequest);
+    SimpleResponse saveCourse(CourseRequest courseRequest);
 
     PaginationCourseResponse getAllCourses(int page, int size);
 
