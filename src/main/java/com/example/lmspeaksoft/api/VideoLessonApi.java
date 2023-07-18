@@ -31,7 +31,7 @@ public class VideoLessonApi {
     }
 
     @PreAuthorize("permitAll()")
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/getById")
     public VideoLessonResponse getById(@PathVariable Long id) {
         return videoService.getByIdVideoLesson(id);
     }
