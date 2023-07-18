@@ -75,4 +75,11 @@ public class Lesson {
         }
         links.add(link);
     }
+
+    public void addVideoLesson(VideoLesson videoLesson) {
+        if (videoLessons == null) {
+            videoLessons = new ArrayList<>();
+        }
+        videoLessons.add(videoLesson);
+    }
 }
