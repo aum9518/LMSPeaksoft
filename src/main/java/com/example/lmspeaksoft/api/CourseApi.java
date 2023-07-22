@@ -9,11 +9,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("/api/courses")
 @RequiredArgsConstructor
 public class CourseApi {
+
 
     private final CourseService courseService;
 

@@ -49,10 +49,10 @@ public class GlobalException {
     }
 
     @ExceptionHandler(AlreadyExistException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
+    @ResponseStatus(HttpStatus.FOUND)
     public ExceptionResponse handleNotAlreadyExist(AlreadyExistException e) {
         return new ExceptionResponse(
-                HttpStatus.CONFLICT,
+                HttpStatus.FOUND,
                 e.getClass().getSimpleName(),
                 e.getMessage()
         );
